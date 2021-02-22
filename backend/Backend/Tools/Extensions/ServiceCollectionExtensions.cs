@@ -9,6 +9,7 @@ using Repositories.Characters;
 using SendGrid;
 using Serilog;
 using Services;
+using Services.Characters;
 using Services.Google;
 
 namespace Backend.Tools.Extensions
@@ -62,6 +63,7 @@ namespace Backend.Tools.Extensions
 					.AddScoped<IUserRepository, UserRepository>()
 					.AddScoped<ISpeciesRepository, SpeciesRepository>()
 					.AddScoped<IEmailSenderService, EmailSenderService>()
+					.AddScoped<ISpeciesService, SpeciesService>()
 					.AddHttpClient<RecaptchaService>();
 
 			return services;
