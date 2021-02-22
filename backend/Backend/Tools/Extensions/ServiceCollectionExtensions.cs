@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
+using Repositories.Characters;
 using SendGrid;
 using Serilog;
 using Services;
@@ -59,6 +60,7 @@ namespace Backend.Tools.Extensions
 		{
 			services.AddTransient<ISendGridClient>(a => new SendGridClient(config["Application:Email:SendGridApiKey"]))
 					.AddScoped<IUserRepository, UserRepository>()
+					.AddScoped<ISpeciesRepository, SpeciesRepository>()
 					.AddScoped<IEmailSenderService, EmailSenderService>()
 					.AddHttpClient<RecaptchaService>();
 
