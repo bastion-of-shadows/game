@@ -19,14 +19,14 @@ namespace Core.ViewModels.Characters.Species
 		[MaxLength(500)]
 		public string Description { get; set; }
 		public bool ForceSensitive { get; set; }
-		public decimal HpCoefficient { get; set; }
+		public float HpCoefficient { get; set; }
 
-		public int StrengthModifier { get; set; }
-		public int DexterityModifier { get; set; }
-		public int ConstitutionModifier { get; set; }
-		public int IntelligenceModifier { get; set; }
-		public int CharismaModifier { get; set; }
-		public int WisdomModifier { get; set; }
-		public int AwarenessModifier { get; set; }
+		public byte StrengthModifier { get; set; }
+		public byte DexterityModifier { get; set; }
+		public byte ConstitutionModifier { get; set; }
+		public byte IntelligenceModifier { get; set; }
+		public byte CharismaModifier { get; set; }
+		public byte WisdomModifier { get; set; }
+		public byte AwarenessModifier { get; set; }
 	}
 }
