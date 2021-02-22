@@ -9,6 +9,7 @@ using Services.Characters;
 namespace Backend.Controllers
 {
 	[ApiController]
+	[Route("[controller]")]
 	public class SpeciesController : ControllerBase
 	{
 		private readonly ISpeciesService _speciesService;
