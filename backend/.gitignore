@@ -4,6 +4,7 @@
 [Bb]uild
 *.dll
 *.blob
+*.tar
 appsettings*
 
 # Serilog
