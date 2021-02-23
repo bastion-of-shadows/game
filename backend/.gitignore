@@ -1,7 +1,7 @@
 # .NET
 [Bb]in
 [Oo]bj
-[Pp]ublish
+[Bb]uild
 *.dll
 *.blob
 appsettings*
