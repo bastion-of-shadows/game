@@ -29,7 +29,7 @@ namespace Backend.Controllers
 			return Ok(response);
 		}
 
-		[HttpGet]
+		[HttpGet("{id}")]
 		public async Task<IActionResult> GetSpecies(int id)
 		{
 			var species = await _speciesService.GetSpecies(id);
