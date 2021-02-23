@@ -1,4 +1,5 @@
 import * as React from "react"
+import { NavLink } from "react-router-dom"
 
 import "./Footer.scss"
 
@@ -9,7 +10,7 @@ const Footer: React.FunctionComponent = (): JSX.Element => {
 				&copy; {new Date().getFullYear()} Bastion of Shadows. All rights reserved.
 			</p>
 			<p className="footer__paragraph">
-				See our statement on Fair Use of copyrighted material.
+				See our statement on <NavLink to="/fair-use">Fair Use of trademark material</NavLink>.
 			</p>
 		</footer>
 	)

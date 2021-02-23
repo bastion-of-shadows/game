@@ -4,12 +4,14 @@ import ArticleHeader from "@/components/ui/articles/ArticleHeader"
 type ArticleSectionProps = {
 	preamble?: boolean,
 	headerText?: string,
+	headingLevel?: number,
 	children?: React.ReactNode
 }
 
 const ArticleSection: React.FunctionComponent<ArticleSectionProps> = ({
 	preamble = false,
 	headerText,
+	headingLevel = 2,
 	children
 }: ArticleSectionProps): JSX.Element => {
 
@@ -18,7 +20,7 @@ const ArticleSection: React.FunctionComponent<ArticleSectionProps> = ({
 	return (
 		<section className={sectionClasses}>
 			{headerText && (
-				<ArticleHeader level={2}>
+				<ArticleHeader level={headingLevel}>
 					{ headerText }
 				</ArticleHeader>
 			)}

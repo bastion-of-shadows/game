@@ -1,9 +1,15 @@
 import * as React from "react"
-import { PropsWithChildren } from "react"
 
-const ArticleParagraph: React.FunctionComponent = ({ children }: PropsWithChildren<unknown>): JSX.Element => {
+type ArticleParagraphProps = {
+	preamble?: boolean,
+	children?: React.ReactNode
+}
+
+const ArticleParagraph: React.FunctionComponent<ArticleParagraphProps> = ({ preamble = false, children }: ArticleParagraphProps): JSX.Element => {
+
+	const classes = `article__paragraph ${preamble ? "article__paragraph--preamble" : ""}`
 	return (
-		<p className="article__paragraph">
+		<p className={classes}>
 			{ children }
 		</p>
 	)
