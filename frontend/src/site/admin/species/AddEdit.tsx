@@ -6,9 +6,15 @@ import { useFormInputValidation } from "@/hooks/forms"
 import { required, requireLength } from "@/tools/validations"
 import TextField from "@/components/ui/forms/fields/TextField"
 import CheckField from "@/components/ui/forms/fields/CheckField"
-import { addSpecies } from "@/tools/browser/species"
+import { addSpecies, editSpecies } from "@/tools/browser/species"
+import { AddSpeciesModel, EditSpeciesModel, SpeciesModel } from "@/tools/definitions/species"
+import { ApiResponse } from "@/tools/definitions/requests"
 
-const Add: React.FunctionComponent = (): JSX.Element => {
+type AddEditProps = {
+	species?: SpeciesModel
+}
+
+const AddEdit: React.FunctionComponent<AddEditProps> = ({ species }: AddEditProps): JSX.Element => {
 
 	const history = useHistory()
 	const { url } = useRouteMatch()
@@ -16,55 +22,58 @@ const Add: React.FunctionComponent = (): JSX.Element => {
 	const [errors, setErrors]: [string[], Dispatch<SetStateAction<string[]>>] = useState([])
 
 	const name = useFormInputValidation<string>({
-		initialValue: "",
+		initialValue: species?.name ?? "",
 		validators: [required]
 	})
 	const pluralName = useFormInputValidation<string>({
-		initialValue: "",
+		initialValue: species?.pluralName ?? "",
 		validators: [required]
 	})
 	const description = useFormInputValidation<string>({
-		initialValue: "",
+		initialValue: species?.description ?? "",
 		validators: [required]
 	})
 	description.validators.push(input => requireLength(input, 0, 500))
 
-	const forceSensitive = useFormInputValidation<boolean>({ initialValue: false })
+	const forceSensitive = useFormInputValidation<boolean>({
+		initialValue: species?.forceSensitive ?? false
+	})
 	const hpCoefficient = useFormInputValidation<number|string>({
-		initialValue: 10,
+		initialValue: species?.hpCoefficient ?? 10,
 		validators: [required]
 	})
 	const strengthModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.strengthModifier ?? 0,
 		validators: [required]
 	})
 	const dexterityModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.dexterityModifier ?? 0,
 		validators: [required]
 	})
 	const constitutionModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.constitutionModifier ?? 0,
 		validators: [required]
 	})
 	const intelligenceModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.intelligenceModifier ?? 0,
 		validators: [required]
 	})
 	const charismaModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.charismaModifier ?? 0,
 		validators: [required]
 	})
 	const wisdomModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.wisdomModifier ?? 0,
 		validators: [required]
 	})
 	const awarenessModifier = useFormInputValidation<number|string>({
-		initialValue: 0,
+		initialValue: species?.awarenessModifier ?? 0,
 		validators: [required]
 	})
 
 	const onSubmit = async () => {
-		const response = await addSpecies({
+		let response: ApiResponse<unknown>
+		const data: AddSpeciesModel = {
 			name: name.value,
 			pluralName: pluralName.value,
 			description: description.value,
@@ -77,12 +86,21 @@ const Add: React.FunctionComponent = (): JSX.Element => {
 			intelligenceModifier: parseInt(intelligenceModifier.value as string),
 			strengthModifier: parseInt(strengthModifier.value as string),
 			wisdomModifier: parseInt(wisdomModifier.value as string)
-		})
+		}
 
-		if (!response.wasSuccessful) {
-			setErrors(response.errors["Unknown"])
+		if (species) {
+			const editData = data as EditSpeciesModel
+			editData.id = species.id
+
+			response = await editSpecies(editData)
 		} else {
+			response = await addSpecies(data)
+		}
+
+		if (response.wasSuccessful) {
 			history.push(`${url}/successful`)
+		} else {
+			setErrors(response.errors["Unknown"])
 		}
 
 		return response.wasSuccessful
@@ -91,8 +109,22 @@ const Add: React.FunctionComponent = (): JSX.Element => {
 	return (
 		<Form
 			handleSubmit={onSubmit}
-			title="Add new species"
+			title={species ? `Edit ${species.pluralName}` : "Add new species"}
 			showRecaptcha={false}
+			errors={errors}
+			validators={[
+				name.validator,
+				pluralName.validator,
+				description.validator,
+				hpCoefficient.validator,
+				strengthModifier.validator,
+				dexterityModifier.validator,
+				constitutionModifier.validator,
+				intelligenceModifier.validator,
+				charismaModifier.validator,
+				wisdomModifier.validator,
+				awarenessModifier.validator
+			]}
 		>
 			<TextField
 				labelText="Species name"
@@ -233,4 +265,4 @@ const Add: React.FunctionComponent = (): JSX.Element => {
 	)
 }
 
-export default Add
+export default AddEdit
