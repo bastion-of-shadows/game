@@ -3,6 +3,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom"
 import { NavDestination } from "@/tools/definitions/general"
 import AdminMenu from "@/components/nav/AdminMenu"
 import Add from "@/site/admin/species/Add"
+import AddSuccessful from "@/site/admin/species/AddSuccessful"
 
 const links: NavDestination[] = [
 	{
@@ -24,8 +25,17 @@ const Species: React.FunctionComponent = (): JSX.Element => {
 
 			<section className="admin__content">
 				<Switch>
-					<Route path={`${path}/add`}>
+					<Route
+						exact
+						path={`${path}/add`}
+					>
 						<Add />
+					</Route>
+					<Route
+						exact
+						path={`${path}/add/successful`}
+					>
+						<AddSuccessful />
 					</Route>
 				</Switch>
 			</section>
