@@ -54,6 +54,7 @@ const Email: React.FunctionComponent<EmailProps> = ({ user }: EmailProps): JSX.E
 					showReset={false}
 					showRecaptcha={false}
 				>
+					<p>Current email: {user?.email}</p>
 					<TextField
 						labelText="New email address"
 						required={true}
