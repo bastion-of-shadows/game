@@ -20,12 +20,12 @@ namespace Core.DataModels.Characters
 		public bool ForceSensitive { get; set; }
 		public float HpCoefficient { get; set; }
 		
-		public byte StrengthModifier { get; set; }
-		public byte DexterityModifier { get; set; }
-		public byte ConstitutionModifier { get; set; }
-		public byte IntelligenceModifier { get; set; }
-		public byte CharismaModifier { get; set; }
-		public byte WisdomModifier { get; set; }
-		public byte AwarenessModifier { get; set; }
+		public short StrengthModifier { get; set; }
+		public short DexterityModifier { get; set; }
+		public short ConstitutionModifier { get; set; }
+		public short IntelligenceModifier { get; set; }
+		public short CharismaModifier { get; set; }
+		public short WisdomModifier { get; set; }
+		public short AwarenessModifier { get; set; }
 	}
 }

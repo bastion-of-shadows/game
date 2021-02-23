@@ -90,22 +90,22 @@ namespace Repositories.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<byte>("AwarenessModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("AwarenessModifier")
+                        .HasColumnType("smallint");
 
-                    b.Property<byte>("CharismaModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("CharismaModifier")
+                        .HasColumnType("smallint");
 
-                    b.Property<byte>("ConstitutionModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("ConstitutionModifier")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(500) CHARACTER SET utf8mb4")
                         .HasMaxLength(500);
 
-                    b.Property<byte>("DexterityModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("DexterityModifier")
+                        .HasColumnType("smallint");
 
                     b.Property<bool>("ForceSensitive")
                         .HasColumnType("tinyint(1)");
@@ -113,8 +113,8 @@ namespace Repositories.Migrations
                     b.Property<float>("HpCoefficient")
                         .HasColumnType("float");
 
-                    b.Property<byte>("IntelligenceModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("IntelligenceModifier")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -124,11 +124,11 @@ namespace Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<byte>("StrengthModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("StrengthModifier")
+                        .HasColumnType("smallint");
 
-                    b.Property<byte>("WisdomModifier")
-                        .HasColumnType("tinyint unsigned");
+                    b.Property<short>("WisdomModifier")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 

@@ -18,13 +18,13 @@ namespace Repositories.Migrations
                     Description = table.Column<string>(maxLength: 500, nullable: false),
                     ForceSensitive = table.Column<bool>(nullable: false),
                     HpCoefficient = table.Column<float>(nullable: false),
-                    StrengthModifier = table.Column<byte>(nullable: false),
-                    DexterityModifier = table.Column<byte>(nullable: false),
-                    ConstitutionModifier = table.Column<byte>(nullable: false),
-                    IntelligenceModifier = table.Column<byte>(nullable: false),
-                    CharismaModifier = table.Column<byte>(nullable: false),
-                    WisdomModifier = table.Column<byte>(nullable: false),
-                    AwarenessModifier = table.Column<byte>(nullable: false)
+                    StrengthModifier = table.Column<short>(nullable: false),
+                    DexterityModifier = table.Column<short>(nullable: false),
+                    ConstitutionModifier = table.Column<short>(nullable: false),
+                    IntelligenceModifier = table.Column<short>(nullable: false),
+                    CharismaModifier = table.Column<short>(nullable: false),
+                    WisdomModifier = table.Column<short>(nullable: false),
+                    AwarenessModifier = table.Column<short>(nullable: false)
                 },
                 constraints: table =>
                 {
