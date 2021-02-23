@@ -4,6 +4,7 @@ import { NavDestination } from "@/tools/definitions/general"
 import AdminMenu from "@/components/nav/AdminMenu"
 import Add from "@/site/admin/species/Add"
 import AddSuccessful from "@/site/admin/species/AddSuccessful"
+import Home from "@/site/admin/species/Home"
 
 const links: NavDestination[] = [
 	{
@@ -25,6 +26,12 @@ const Species: React.FunctionComponent = (): JSX.Element => {
 
 			<section className="admin__content">
 				<Switch>
+					<Route
+						exact
+						path={path}
+					>
+						<Home />
+					</Route>
 					<Route
 						exact
 						path={`${path}/add`}
