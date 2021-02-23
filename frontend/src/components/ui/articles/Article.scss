@@ -1,0 +1,10 @@
+@import "/src/sass/imports.scss";
+
+.article {
+    @include make-padded-widget;
+}
+
+.article__heading {
+	margin-top: $spacer-4;
+	margin-bottom: $spacer-1;
+}
