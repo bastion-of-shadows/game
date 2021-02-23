@@ -1,5 +1,17 @@
 @import "/src/sass/imports";
 
 .footer {
+	text-align: center;
 
+	@include make-padded-widget;
+}
+
+.footer__paragraph {
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
 }
