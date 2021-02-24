@@ -8,6 +8,7 @@ import { required, requireMatch } from "@/tools/validations"
 import TextField from "@/components/ui/forms/fields/TextField"
 import { updateUserEmail } from "@/tools/browser/admin"
 import { ApplicationUserModel } from "@/tools/definitions/users"
+import { getDocumentTitle } from "@/tools/utils"
 
 type EmailProps = {
 	user: ApplicationUserModel
@@ -43,6 +44,8 @@ const Email: React.FunctionComponent<EmailProps> = ({ user }: EmailProps): JSX.E
 
 		return response.wasSuccessful
 	}
+
+	document.title = getDocumentTitle(`Update ${user?.userName}'s email address`)
 
 	return (
 		<>

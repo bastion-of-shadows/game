@@ -4,8 +4,12 @@ import ArticleHeader from "@/components/ui/articles/ArticleHeader"
 import ArticleSection from "@/components/ui/articles/ArticleSection"
 import ArticleParagraph from "@/components/ui/articles/ArticleParagraph"
 import ArticleHeading from "@/components/ui/articles/ArticleHeading"
+import { getDocumentTitle } from "@/tools/utils"
 
 const FairUse: React.FunctionComponent = (): JSX.Element => {
+
+	document.title = getDocumentTitle("Fair use laws")
+
 	return (
 		<div className="app__widget app__widget--lg">
 			<Article>
