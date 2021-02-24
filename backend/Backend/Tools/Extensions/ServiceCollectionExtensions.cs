@@ -44,7 +44,6 @@ namespace Backend.Tools.Extensions
 			// Changes the invalid model state response
 			// (this must come after services.AddControllers() in order to have any effect)
 			return services.Configure<ApiBehaviorOptions>(options => { options.InvalidModelStateResponseFactory = context => new UnprocessableEntityObjectResult(new ApiResponse(context.ModelState)); });
-			return services;
 		}
 
 		public static IServiceCollection AddBastionOptions(this IServiceCollection services, IConfiguration config)
